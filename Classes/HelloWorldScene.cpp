@@ -133,6 +133,10 @@ void HelloWorldScene::menuItemStartCallback(Ref * pSender)
 		MenuItem * item = (MenuItem*)pSender; 
 		log("Touch Start %p", item);
 
+		auto sc = GamePlayScene::createScene();
+		auto reScene = TransitionJumpZoom::create(1.0f, sc);
+		Director::getInstance()->pushScene(reScene);
+
 		if (UserDefault::getInstance()->getBoolForKey(SOUND_KEY))
 			SimpleAudioEngine::getInstance()->playEffect("soundBlip.wav");
 }

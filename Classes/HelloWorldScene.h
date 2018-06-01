@@ -4,6 +4,7 @@
 #include "cocos2d.h"
 #include "SimpleAudioEngine.h"
 #include "SettingScene.h"
+#include "GamePlayScene.h"
 
 class HelloWorldScene: public cocos2d::Layer
 {
