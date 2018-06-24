@@ -1,23 +1,23 @@
-#include"HelloWorldScene.h"
-#include"secondScene.h"
+#include"loadingScene.h"
+#include"GamePlayScene.h"
 #include "SimpleAudioEngine.h"
 
 USING_NS_CC;
 
-Scene* HelloWorldScene::createScene()
+Scene* loadingScene::createScene()
 {
 	auto scene = Scene::create();
-	auto layer = HelloWorldScene::create();
+	auto layer = loadingScene::create();
 	scene->addChild(layer);
 	return scene;
 }
 
-void HelloWorldScene::loadSound()
+void loadingScene::loadSound()
 {
 	//音乐什么的再说吧
 }
 
-bool HelloWorldScene::init()
+bool loadingScene::init()
 {
 	if (!Layer::init())
 	{
@@ -30,11 +30,11 @@ bool HelloWorldScene::init()
 	//auto bg = TMXTiledMap::create("");
 	//this->addChild(bg);
 
-	loadLabel = LabelTTF::create("Loading:", "Arial", 20);//创建显示Loading: 的label  
+	loadLabel = Label::create("Loading:", "Arial", 20);//创建显示Loading: 的label  
 	loadLabel->setPosition(Point(visibleSize.width / 2 - 30, visibleSize.height / 2 + 30));
 	this->addChild(loadLabel, 1);
 
-	percentLabel = LabelTTF::create("0%", "Arial", 20);//创建显示百分比的label  
+	percentLabel = Label::create("0%", "Arial", 20);//创建显示百分比的label  
 	percentLabel->setPosition(Point(visibleSize.width / 2 + 35, visibleSize.height / 2 + 30));
 	this->addChild(percentLabel, 2);
 
@@ -50,8 +50,8 @@ bool HelloWorldScene::init()
 	loadProgress->setPercentage(0.0f);//设置初始值为0  
     this->addChild(loadProgress, 2);
 
-	Director::getInstance()->getTextureCache()->addImageAsync("HelloWorld.png", CC_CALLBACK_1(HelloWorldScene::loadingCallback, this));
-	Director::getInstance()->getTextureCache()->addImageAsync("CloseSelected.png", CC_CALLBACK_1(HelloWorldScene::loadingCallback, this));
+	Director::getInstance()->getTextureCache()->addImageAsync("InitialCar.png", CC_CALLBACK_1(loadingScene::loadingCallback, this));
+	/*Director::getInstance()->getTextureCache()->addImageAsync("CloseSelected.png", CC_CALLBACK_1(HelloWorldScene::loadingCallback, this));
 	Director::getInstance()->getTextureCache()->addImageAsync("USA_building.png", CC_CALLBACK_1(HelloWorldScene::loadingCallback, this));
 	Director::getInstance()->getTextureCache()->addImageAsync("USA tank.png", CC_CALLBACK_1(HelloWorldScene::loadingCallback, this));
 	Director::getInstance()->getTextureCache()->addImageAsync("USA building3.png", CC_CALLBACK_1(HelloWorldScene::loadingCallback, this));
@@ -59,7 +59,7 @@ bool HelloWorldScene::init()
 	Director::getInstance()->getTextureCache()->addImageAsync("USA building5.png", CC_CALLBACK_1(HelloWorldScene::loadingCallback, this));
 	Director::getInstance()->getTextureCache()->addImageAsync("USSR ship.png", CC_CALLBACK_1(HelloWorldScene::loadingCallback, this));
 	Director::getInstance()->getTextureCache()->addImageAsync("USSR ship2.png", CC_CALLBACK_1(HelloWorldScene::loadingCallback, this));
-	Director::getInstance()->getTextureCache()->addImageAsync("USA soldier.png", CC_CALLBACK_1(HelloWorldScene::loadingCallback, this));
+	Director::getInstance()->getTextureCache()->addImageAsync("USA soldier.png", CC_CALLBACK_1(HelloWorldScene::loadingCallback, this));*/
 	//这里是所有游戏需要的图片，初始设定了10张
 
 
@@ -71,7 +71,7 @@ bool HelloWorldScene::init()
 	return true;
 }
 
-void HelloWorldScene::loadingCallback(cocos2d::Object* pSender)
+void loadingScene::loadingCallback(cocos2d::Object* pSender)
 {
 	++m_loadedSp;//每进到这个函数一次，让m_loadedSp + 1 ,即为已经加载过一次 
 
@@ -89,7 +89,7 @@ void HelloWorldScene::loadingCallback(cocos2d::Object* pSender)
 		this->removeChild(percentLabel);
 		this->removeChild(loadLabel);
 
-		Scene * m_SecondScene = secondScene::createScene();
+		Scene * m_SecondScene = GamePlayScene::createScene();
 		Director::sharedDirector()->replaceScene(TransitionJumpZoom::create(1.0f, m_SecondScene));//所以这里有个很难看的切换特效
 	}
 }

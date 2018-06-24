@@ -1,4 +1,5 @@
 #include "HelloWorldScene.h"
+#include"loadingScene.h"
 #include "SimpleAudioEngine.h"
 #include "HeaderSystem.h"
 
@@ -120,7 +121,7 @@ bool HelloWorldScene::init()
 void HelloWorldScene::menuItemSettingCallback(Ref * pSender)
 {
 	auto sc = SettingScene::createScene();
-	auto reScene = TransitionJumpZoom::create(1.0f,sc); 
+	auto reScene = TransitionCrossFade::create(1.0f,sc); 
 	Director::getInstance() -> pushScene(reScene);
 
 	if (UserDefault::getInstance()->getBoolForKey(SOUND_KEY))
@@ -131,11 +132,10 @@ void HelloWorldScene::menuItemSettingCallback(Ref * pSender)
 void HelloWorldScene::menuItemStartCallback(Ref * pSender)
 {
 		MenuItem * item = (MenuItem*)pSender; 
-		log("Touch Start %p", item);
 
 		auto sc = GamePlayScene::createScene();
-		auto reScene = TransitionJumpZoom::create(1.0f, sc);
-		Director::getInstance()->pushScene(reScene);
+		auto reScene = TransitionCrossFade::create(1.0f, sc);
+		Director::getInstance()->pushScene(reScene);             //enter GamePlayScene
 
 		if (UserDefault::getInstance()->getBoolForKey(SOUND_KEY))
 			SimpleAudioEngine::getInstance()->playEffect("soundBlip.wav");

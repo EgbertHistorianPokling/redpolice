@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>frames</key>
+        <dict>
+            <key>tank_bullet.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{-11,9}</string>
+                <key>spriteSize</key>
+                <string>{30,20}</string>
+                <key>spriteSourceSize</key>
+                <string>{142,142}</string>
+                <key>textureRect</key>
+                <string>{{1,1},{30,20}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+        </dict>
+        <key>metadata</key>
+        <dict>
+            <key>format</key>
+            <integer>3</integer>
+            <key>pixelFormat</key>
+            <string>RGBA8888</string>
+            <key>premultiplyAlpha</key>
+            <false/>
+            <key>realTextureFileName</key>
+            <string>aircraft_bullet.png</string>
+            <key>size</key>
+            <string>{32,22}</string>
+            <key>smartupdate</key>
+            <string>$TexturePacker:SmartUpdate:3f4d5a95f3f9df9e0548eac0bb58fd01:812c0e0517a976f4e2bdabf752389f64:5983f7d338175ca9c6d0590835f234f3$</string>
+            <key>textureFileName</key>
+            <string>aircraft_bullet.png</string>
+        </dict>
+    </dict>
+</plist>
